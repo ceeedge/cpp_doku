@@ -22,7 +22,7 @@ public:
 
     Section getRow(unsigned int rowNum) const;
     Section getCol(unsigned int colNum) const;
-    Section getSubgrid(unsigned int subgridNum);
+    Section getSubgrid(unsigned int subgridNum) const;
 
     void loadPuzzle(const PuzzleType& puzzle);
 
