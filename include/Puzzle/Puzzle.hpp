@@ -24,6 +24,10 @@ public:
     Section getCol(unsigned int colNum) const;
     Section getSubgrid(unsigned int subgridNum) const;
 
+    void setCell(unsigned int rowNum, unsigned int colNum, unsigned int value);
+
+    void print() const;
+
     void loadPuzzle(const PuzzleType& puzzle);
 
 private:

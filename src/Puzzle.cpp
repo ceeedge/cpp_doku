@@ -1,4 +1,5 @@
 // Third-Party Includes
+#include <fmt/core.h>
 // Local Includes
 #include "Puzzle/Puzzle.hpp"
 // System Includes
@@ -6,7 +7,10 @@
 #include <cassert>
 #include <cstdlib>
 
-Puzzle::Puzzle(const PuzzleType& puzzle) : m_puzzle{puzzle} {}
+Puzzle::Puzzle(const PuzzleType& puzzle)
+{
+    loadPuzzle(puzzle);
+}
 
 Section Puzzle::getRow(unsigned int rowNum) const
 {
@@ -69,4 +73,17 @@ void Puzzle::loadPuzzle(const PuzzleType& puzzle)
         for(std::size_t col = 0; col < SECTION_SIZE; col++)
         m_puzzle[row][col] = puzzle[row][col];
 
+}
+
+void Puzzle::setCell(unsigned int rowNum, unsigned int colNum, unsigned int value)
+{
+    m_puzzle[rowNum][colNum] = value;
+}
+
+void Puzzle::print() const
+{ 
+    for(const auto& row : m_puzzle)
+        for(const auto& element : row)
+            fmt::print("{} ", element);
+        fmt::print("\n");
 }
