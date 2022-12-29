@@ -5,6 +5,7 @@
 // System Includes
 #include <algorithm>
 #include <cassert>
+#include <cmath>
 #include <cstdlib>
 
 Puzzle::Puzzle(const PuzzleType& puzzle)
@@ -45,9 +46,9 @@ Section Puzzle::getSubgrid(unsigned int subgridNum) const
     {
         Section subgridCopy;
         const auto subgrid = static_cast<std::size_t>(subgridNum);
-        std::size_t startRowIdx;
-        std::size_t startColIdx = 0;
-        if(subgrid > 0 && subgrid < 4)
+        std::size_t startRowIdx{};
+        std::size_t startColIdx{};
+        if(subgrid >= 0 && subgrid < 4)
             startRowIdx = 0;
         else if(subgrid > 3 && subgrid < 7)
             startRowIdx = 3;
@@ -86,4 +87,9 @@ void Puzzle::print() const
         for(const auto& element : row)
             fmt::print("{} ", element);
         fmt::print("\n");
+}
+
+std::size_t Puzzle::findSubGridAt(std::size_t rowNum, std::size_t colNum) const
+{
+  return 3*std::floor(rowNum/3) + std::floor(colNum/3);
 }

@@ -24,6 +24,8 @@ public:
     Section getCol(unsigned int colNum) const;
     Section getSubgrid(unsigned int subgridNum) const;
 
+    std::size_t findSubGridAt(std::size_t rowNum, std::size_t colNum) const;
+
     void setCell(unsigned int rowNum, unsigned int colNum, unsigned int value);
 
     void print() const;

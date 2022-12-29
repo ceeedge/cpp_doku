@@ -2,8 +2,10 @@
 
 #include "Puzzle/Puzzle.hpp"
 
+#include <algorithm>
 #include <array>
 #include <unordered_set>
+#include <vector>
 
 constexpr PuzzleType puzzle{{
     {5, 3, 0, 0, 7, 0, 0, 0, 0},
@@ -18,21 +20,23 @@ constexpr PuzzleType puzzle{{
 
 }};
 
-int main(int argc[[maybe_unused]], char** argv[[maybe_unused]])
+int main(int argc [[maybe_unused]], char **argv [[maybe_unused]])
 {
-    Puzzle p{puzzle};
-    bool isSolved{false};
+  Puzzle p{puzzle};
+  bool isSolved{false};
 
-    while(!isSolved)
+  while (!isSolved)
+  {
+    for (std::size_t rowIdx = 0; rowIdx < SECTION_SIZE; rowIdx++)
     {
-        for(std::size_t rowIdx = 0; rowIdx < SECTION_SIZE; rowIdx++)
+      for (std::size_t colIdx = 0; colIdx < SECTION_SIZE; colIdx++)
+      {
+        if(puzzle[rowIdx][colIdx] == 0)
         {
-            const auto row = p.getRow(rowIdx);
-            for(std::size_t colIdx = 0; colIdx < SECTION_SIZE; colIdx++)
-            {
-                const auto col = p.getCol(colIdx);
-            }
+          
         }
+      }
     }
-    return 0;
+  }
+  return 0;
 }
